@@ -20,16 +20,18 @@
     <link rel="manifest" href="/manifest.json" />
 
     <meta charset="utf-8">
-    <title>Template | UwU Apps</title>
+    <title>Vigila | Discord Moderation Bot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A simple template app; view live template at a glance!">
+    <meta name="description"
+        content="Vigila — a modern moderation bot for Discord, formerly Verbal Warning Logger. Open source and self-hostable.">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Template | UwU Apps" />
-    <meta property="og:site_name" content="UwU Apps" />
-    <meta property="og:description" content="A simple template app; view live template at a glance!" />
+    <meta property="og:title" content="Vigila | Discord Moderation Bot" />
+    <meta property="og:site_name" content="Vigila" />
+    <meta property="og:description"
+        content="Vigila — a modern moderation bot for Discord, formerly Verbal Warning Logger. Open source and self-hostable." />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jua">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jua&family=Nunito">
     <link rel="stylesheet" href="/style.css">
 
     <!-- Embed Image -->
@@ -42,19 +44,356 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script defer="" src="https://use.fontawesome.com/releases/v6.5.2/js/all.js"></script>
+
+    <!-- Highlight.js for code blocks -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
+        id="hljs-theme" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 
-<body>
-    Template
+<body class="light" data-font="Jua">
+    <!-- Ambient background blobs -->
+    <div class="bg-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Font picker -->
+    <div class="font-picker-wrapper" id="fontPickerWrapper">
+        <button class="font-picker-toggle" id="fontPickerToggle" aria-label="Change font" title="Change font">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 7 4 4 20 4 20 7" />
+                <line x1="9" y1="20" x2="15" y2="20" />
+                <line x1="12" y1="4" x2="12" y2="20" /></svg>
+            Font
+        </button>
+        <div class="font-dropdown" id="fontDropdown" role="listbox" aria-label="Font options">
+            <div class="font-option active" data-font="Jua" role="option">Jua</div>
+            <div class="font-option" data-font="Nunito" role="option">Nunito</div>
+            <div class="font-option" data-font="Lexend" role="option">Lexend</div>
+            <div class="font-option" data-font="Fredoka" role="option">Fredoka</div>
+            <div class="font-option" data-font="Quicksand" role="option">Quicksand</div>
+            <div class="font-option" data-font="Poppins" role="option">Poppins</div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="navbar glass">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="nav-logo" aria-hidden="true">🛡️</span>
+                <span class="nav-title">Vigila</span>
+                <span class="nav-badge">v2</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#auttaja" class="nav-link">Auttaja Migration</a>
+                <a href="#import-guide" class="nav-link">Import Guide</a>
+                <a href="https://docs.vigila.augystudios.com" class="nav-link nav-link-docs" target="_blank"
+                    rel="noopener">Docs ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="top">
+            <div class="hero-inner">
+                <div class="hero-eyebrow">formerly Verbal Warning Logger</div>
+                <h1 class="hero-title">
+                    <span class="hero-title-main">Vigila</span>
+                    <span class="hero-title-sub">Your server's memory, enforced.</span>
+                </h1>
+                <p class="hero-desc">
+                    A Discord moderation bot built for communities that care about accountability.
+                    Log punishments, query history, and migrate from legacy tools — all powered by Supabase.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://docs.vigila.augystudios.com" class="btn btn-primary" target="_blank"
+                        rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+                        Read the Docs
+                    </a>
+                    <a href="https://docs.vigila.augystudios.com" class="btn btn-secondary" target="_blank"
+                        rel="noopener">
+                        Self-Host Vigila ↗
+                    </a>
+                </div>
+                <p class="hero-hint">Want to self-host or learn more? The documentation has everything you need.</p>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="terminal glass">
+                    <div class="terminal-bar">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                        <span class="terminal-title">vigila-bot</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line"><span class="t-dim">[INFO]</span> Vigila is online <span
+                                class="t-green">✓</span></div>
+                        <div class="terminal-line"><span class="t-dim">[DB]</span> Supabase connected <span
+                                class="t-green">✓</span></div>
+                        <div class="terminal-line"><span class="t-dim">[CMD]</span> /warn <span
+                                class="t-green">@user</span> <span class="t-yellow">Spamming</span></div>
+                        <div class="terminal-line"><span class="t-dim">[LOG]</span> Punishment <span
+                                class="t-green">#1042</span> recorded</div>
+                        <div class="terminal-line terminal-cursor"><span class="t-dim">[VIGILA]</span> Ready&nbsp;<span
+                                class="cursor-blink">▌</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="section-inner">
+                <div class="section-label">About</div>
+                <h2 class="section-title">What is Vigila?</h2>
+                <p class="section-body">
+                    Vigila (Latin: <em>to watch, to keep guard</em>) is a Discord moderation bot designed for
+                    server staff who need reliable, queryable punishment records. It was previously known as
+                    <strong>Verbal Warning Logger</strong> — renamed to reflect its broader scope as a full
+                    moderation logging suite rather than just warnings.
+                </p>
+                <div class="feature-grid">
+                    <div class="feature-card glass">
+                        <div class="feature-icon">📋</div>
+                        <h3>Punishment Logging</h3>
+                        <p>Record warns, mutes, kicks, and bans with reasons, timestamps, and moderator attribution.</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Queryable History</h3>
+                        <p>Look up any user's full moderation history instantly. Filter by action type or moderator.</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <div class="feature-icon">🗄️</div>
+                        <h3>Supabase Backend</h3>
+                        <p>All data is stored in your own Supabase project. You own your data, always.</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <div class="feature-icon">🔓</div>
+                        <h3>Open Source &amp; Self-Hostable</h3>
+                        <p>Deploy Vigila on your own infrastructure. Full documentation available.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTTAJA SECTION -->
+        <section class="section section-alt" id="auttaja">
+            <div class="section-inner">
+                <div class="section-label">Migration</div>
+                <h2 class="section-title">Why Auttaja + Supabase?</h2>
+                <div class="prose glass prose-card">
+                    <p>
+                        <strong>Auttaja</strong> was a popular Discord moderation bot that shut down its public service,
+                        leaving many communities with years of punishment history trapped in a
+                        <code>punishments.json</code>
+                        export file — and no easy way to use it going forward.
+                    </p>
+                    <p>
+                        Vigila was built with first-class support for these communities. Rather than starting from
+                        scratch,
+                        you can import your entire Auttaja punishment history into Vigila's Supabase database in
+                        minutes,
+                        preserving every warning, mute, kick, and ban record your staff ever issued.
+                    </p>
+                    <p>
+                        The Supabase integration was chosen specifically because it gives <em>you</em> full control over
+                        your data. There is no vendor lock-in, no third-party retention, and no black box. Your
+                        <code>punishments</code> table is yours — readable by standard PostgreSQL tooling, exportable
+                        at any time, and secured with Supabase's row-level security (RLS).
+                    </p>
+                    <p>
+                        The <code>auttaja.py</code> cog bundled with Vigila is <strong>read-only</strong> — it queries
+                        your migrated Auttaja data without modifying it, so your historical records remain exactly as
+                        Auttaja left them while Vigila continues logging new punishments going forward.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPORT GUIDE -->
+        <section class="section" id="import-guide">
+            <div class="section-inner">
+                <div class="section-label">Import Guide</div>
+                <h2 class="section-title">Migrating from Auttaja</h2>
+                <p class="section-body">Follow these steps to import your Auttaja <code>punishments.json</code> into
+                    Supabase.</p>
+
+                <div class="steps">
+
+                    <!-- Step 1 -->
+                    <div class="step glass">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Create the Supabase Table</h3>
+                            <p>Open your Supabase project, go to the <strong>SQL Editor</strong>, and run the following:
+                            </p>
+                            <div class="code-block-wrapper">
+                                <button class="copy-btn" data-target="sql-create" aria-label="Copy SQL">Copy</button>
+                                <pre><code class="language-sql" id="sql-create">create table punishments (
+  id           text primary key,
+  guild_id     text not null,
+  offender     text not null,
+  punisher     text,
+  reason       text,
+  action       text,           -- normalised to lowercase
+  timestamp    timestamptz,
+  duration     integer,        -- converted from string to int (seconds)
+  deleted      boolean default false,
+  removed_by   text,
+  removed_reason text,
+  resolve      text            -- references another punishment id
+);
+alter table punishments enable row level security;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step glass">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Install the Supabase JS Client</h3>
+                            <p>In your terminal, navigate to the folder containing your <code>punishments.json</code>
+                                and run:</p>
+                            <div class="code-block-wrapper">
+                                <button class="copy-btn" data-target="npm-install"
+                                    aria-label="Copy npm install">Copy</button>
+                                <pre><code class="language-bash" id="npm-install">npm install @supabase/supabase-js</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step glass">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Create <code>import-punishments.mjs</code></h3>
+                            <p>
+                                Save the following script in the same directory as your <code>punishments.json</code>.
+                                Replace <code>YOUR_PROJECT</code> and <code>YOUR_SERVICE_ROLE_KEY</code> with the values
+                                from your Supabase project's <strong>Settings → API</strong> page.
+                                Use the <strong>service role key</strong> (not the anon key) so the insert bypasses RLS.
+                            </p>
+                            <div class="code-block-wrapper">
+                                <button class="copy-btn" data-target="mjs-script" aria-label="Copy script">Copy</button>
+                                <pre><code class="language-javascript" id="mjs-script">// import-punishments.mjs
+import { createClient } from '@supabase/supabase-js'
+import { readFileSync } from 'fs'
+
+const supabase = createClient(
+  'https://YOUR_PROJECT.supabase.co',
+  'YOUR_SERVICE_ROLE_KEY'  // use service role key, not anon key
+)
+
+const raw = JSON.parse(readFileSync('./punishments.json', 'utf8'))
+
+const records = raw.map(r => ({
+  id:             r.id,
+  guild_id:       r.guild_id,
+  offender:       r.offender,
+  punisher:       r.punisher ?? null,
+  reason:         r.reason ?? null,
+  action:         r.action?.toLowerCase() ?? null,   // normalise Mute/Strike → mute/strike
+  timestamp:      r.timestamp?.epoch_time
+                    ? new Date(r.timestamp.epoch_time * 1000).toISOString()
+                    : null,
+  duration:       r.duration != null ? parseInt(r.duration, 10) : null,
+  deleted:        r.deleted ?? false,
+  removed_by:     r.removed_by ?? null,
+  removed_reason: r.removed_reason ?? null,
+  resolve:        r.resolve ?? null,
+}))
+
+const CHUNK_SIZE = 500
+
+for (let i = 0; i &lt; records.length; i += CHUNK_SIZE) {
+  const chunk = records.slice(i, i + CHUNK_SIZE)
+  const { error } = await supabase.from('punishments').insert(chunk)
+  if (error) {
+    console.error(`❌ Chunk ${Math.floor(i / CHUNK_SIZE) + 1} failed:`, error.message)
+  } else {
+    console.log(`✅ Chunk ${Math.floor(i / CHUNK_SIZE) + 1} inserted (${chunk.length} rows)`)
+  }
+}
+
+console.log(`\nDone! ${records.length} records processed.`)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step glass">
+                        <div class="step-number">04</div>
+                        <div class="step-content">
+                            <h3>Run the Script</h3>
+                            <p>Execute the import with Node.js:</p>
+                            <div class="code-block-wrapper">
+                                <button class="copy-btn" data-target="run-script"
+                                    aria-label="Copy run command">Copy</button>
+                                <pre><code class="language-bash" id="run-script">node import-punishments.mjs</code></pre>
+                            </div>
+                            <p class="step-note">
+                                The script processes records in chunks of 500 to avoid payload limits.
+                                Each chunk logs a ✅ on success or ❌ with an error message on failure.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FOOTER STRIP -->
+        <section class="cta-strip">
+            <div class="cta-inner glass">
+                <div class="cta-text">
+                    <h2>Ready to get started?</h2>
+                    <p>Full setup guide, command reference, and self-hosting instructions are in the docs.</p>
+                </div>
+                <a href="https://docs.vigila.augystudios.com" class="btn btn-primary btn-lg" target="_blank"
+                    rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+                    Go to the Docs
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>🛡️ Vigila &mdash; <a href="https://vigila.augystudios.com">vigila.augystudios.com</a></span>
+            <span class="footer-sep">·</span>
+            <span><a href="https://docs.vigila.augystudios.com">Documentation</a></span>
+            <span class="footer-sep">·</span>
+            <span class="footer-fka">fka Verbal Warning Logger</span>
+        </div>
+    </footer>
 
     <script src="/script.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/sw.js');
+            navigator.serviceWorker.register('/sw.js');
         }
     </script>
-    
+
 </body>
 
 </html>
