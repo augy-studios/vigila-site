@@ -1,11 +1,11 @@
-const CACHE = "template-offline-v1";
+const CACHE = "vigila-offline-v1";
 
 const ASSETS = [
   "/",
   "/index.html",
   "/style.css",
   "/app.js",
-  "/templateicon1192.png",
+  "/templateicon1.png",
   "/favicon.ico",
   "/manifest.json"
 ];
