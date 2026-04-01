@@ -700,6 +700,7 @@ code {
 
 .step-content {
   flex: 1;
+  min-width: 0;
 }
 
 .step-content h3 {
