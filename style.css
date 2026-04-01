@@ -1094,3 +1094,112 @@ code {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Very narrow screens (≥260px) ---------- */
+@media (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+
+  .nav-inner {
+    padding: 0 10px;
+  }
+
+  .nav-badge {
+    display: none;
+  }
+
+  .hero {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 28px;
+  }
+
+  .hero-title-main {
+    font-size: 2.2rem;
+  }
+
+  .hero-title-sub {
+    font-size: 0.95rem;
+  }
+
+  .hero-desc {
+    font-size: 0.88rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .section {
+    padding: 48px 12px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .prose-card {
+    padding: 16px;
+  }
+
+  .step {
+    padding: 16px;
+  }
+
+  .step-number {
+    font-size: 1.1rem;
+  }
+
+  .code-block-wrapper pre,
+  .code-block-wrapper .hljs {
+    font-size: 0.62rem;
+    padding: 10px 8px;
+  }
+
+  .copy-btn {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+    top: 4px;
+    right: 4px;
+  }
+
+  .cta-inner {
+    padding: 20px 16px;
+  }
+
+  .cta-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .nav-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .font-picker-wrapper {
+    right: 10px;
+    bottom: 16px;
+  }
+
+  .font-picker-toggle {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+
+  .footer-inner {
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+}
+
+/* Global overflow guard — prevents horizontal scroll at any width */
+html {
+  overflow-x: hidden;
+}
