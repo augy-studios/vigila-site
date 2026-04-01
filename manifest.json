@@ -1,15 +1,16 @@
 {
+    "id": "vigila",
     "name": "Vigila | Discord Moderation Bot",
     "short_name": "Vigila",
     "description": "A modern moderation bot for Discord, formerly Verbal Warning Logger.",
     "icons": [
         {
-            "src": "templateicon1.png",
+            "src": "vigilaicon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
-            "src": "templateicon1.png",
+            "src": "vigilaicon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         }
@@ -33,7 +34,6 @@
     "display": "standalone",
     "display_override": ["fullscreen", "minimal-ui", "window-controls-overlay"],
     "orientation": "portrait-primary",
-    "id": "template",
     "dir": "ltr",
     "scope": "/",
     "lang": "en",
