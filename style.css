@@ -736,6 +736,8 @@ code {
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border);
+  max-width: 100%;
+  width: 100%;
 }
 
 .code-block-wrapper pre {
@@ -743,6 +745,7 @@ code {
   overflow-x: auto;
   font-size: 0.82rem;
   background: rgba(240, 254, 240, 0.85) !important;
+  max-width: 100%;
 }
 
 .code-block-wrapper code {
@@ -921,5 +924,42 @@ code {
 
   .step {
     padding: 20px;
+  }
+
+  .code-block-wrapper pre,
+  .code-block-wrapper .hljs {
+    font-size: 0.72rem;
+    padding: 14px 12px;
+  }
+
+  .copy-btn {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    top: 6px;
+    right: 6px;
+  }
+}
+
+/* Ensure inline code wraps rather than overflows on narrow screens */
+@media (max-width: 640px) {
+  code {
+    word-break: break-word;
+  }
+
+  .nav-inner {
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cta-inner {
+    padding: 28px 22px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 }
