@@ -861,7 +861,7 @@ code {
   position: relative;
   margin: 14px 0;
   border-radius: var(--radius-sm);
-  overflow: hidden;
+  overflow: hidden;         /* clips child backgrounds to rounded corners */
   border: 1px solid var(--border);
   max-width: 100%;
   width: 100%;
@@ -869,10 +869,11 @@ code {
 
 .code-block-wrapper pre {
   margin: 0;
-  overflow-x: auto;
+  overflow-x: auto;         /* horizontal scroll when content is wider than container */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
   font-size: 0.82rem;
   background: rgba(240, 254, 240, 0.85) !important;
-  max-width: 100%;
+  /* no max-width here — the wrapper constrains width; pre scrolls its content */
 }
 
 .code-block-wrapper code {
@@ -1057,18 +1058,6 @@ code {
     padding: 20px;
   }
 
-  .code-block-wrapper pre,
-  .code-block-wrapper .hljs {
-    font-size: 0.72rem;
-    padding: 14px 12px;
-  }
-
-  .copy-btn {
-    font-size: 0.68rem;
-    padding: 3px 8px;
-    top: 6px;
-    right: 6px;
-  }
 }
 
 /* Ensure inline code wraps rather than overflows on narrow screens */
@@ -1155,19 +1144,6 @@ code {
 
   .step-number {
     font-size: 1.1rem;
-  }
-
-  .code-block-wrapper pre,
-  .code-block-wrapper .hljs {
-    font-size: 0.62rem;
-    padding: 10px 8px;
-  }
-
-  .copy-btn {
-    font-size: 0.62rem;
-    padding: 2px 6px;
-    top: 4px;
-    right: 4px;
   }
 
   .cta-inner {
