@@ -1,5 +1,5 @@
 // ---------- Font Picker ----------
-const FONTS = ['Jua', 'Nunito', 'Lexend', 'Fredoka', 'Quicksand', 'Poppins'];
+const FONTS = ['Jua', 'Nunito', 'Lexend'];
 const STORAGE_KEY_FONT = 'vigila-font';
 
 function applyFont(font) {
