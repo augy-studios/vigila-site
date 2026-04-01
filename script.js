@@ -141,6 +141,46 @@ function registerSW() {
     }
 }
 
+// ---------- Mobile Nav Sidebar ----------
+function initMobileNav() {
+    const hamburger = document.getElementById('navHamburger');
+    const sidebar = document.getElementById('navSidebar');
+    const overlay = document.getElementById('navOverlay');
+    const closeBtn = document.getElementById('navSidebarClose');
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        sidebar.setAttribute('aria-hidden', 'false');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        sidebar.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close on any sidebar link click
+    sidebar.querySelectorAll('.nav-sidebar-link').forEach(link => {
+        link.addEventListener('click', closeSidebar);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSidebar();
+    });
+}
+
 // ---------- Init ----------
 document.addEventListener('DOMContentLoaded', () => {
     initFontPicker();
@@ -148,5 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initHighlight();
     initNavHighlight();
+    initMobileNav();
     registerSW();
 });

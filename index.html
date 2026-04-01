@@ -92,8 +92,30 @@
                 <a href="https://docs.vigila.augystudios.com" class="nav-link nav-link-docs" target="_blank"
                     rel="noopener">Docs ↗</a>
             </div>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navSidebar">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile sidebar -->
+    <div class="nav-sidebar" id="navSidebar" aria-hidden="true">
+        <div class="nav-sidebar-header">
+            <div class="nav-brand">
+                <img src="/vigilaicon.png" alt="Vigila logo" class="nav-logo-img" />
+                <span class="nav-title">Vigila</span>
+                <span class="nav-badge">v2</span>
+            </div>
+            <button class="nav-sidebar-close" id="navSidebarClose" aria-label="Close menu">&#x2715;</button>
+        </div>
+        <nav class="nav-sidebar-links">
+            <a href="#about" class="nav-sidebar-link">About</a>
+            <a href="#auttaja" class="nav-sidebar-link">Auttaja Migration</a>
+            <a href="#import-guide" class="nav-sidebar-link">Import Guide</a>
+            <a href="https://docs.vigila.augystudios.com" class="nav-sidebar-link nav-sidebar-link-docs" target="_blank" rel="noopener">Docs ↗</a>
+        </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <main>
 
