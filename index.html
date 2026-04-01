@@ -74,9 +74,6 @@
             <div class="font-option active" data-font="Jua" role="option">Jua</div>
             <div class="font-option" data-font="Nunito" role="option">Nunito</div>
             <div class="font-option" data-font="Lexend" role="option">Lexend</div>
-            <div class="font-option" data-font="Fredoka" role="option">Fredoka</div>
-            <div class="font-option" data-font="Quicksand" role="option">Quicksand</div>
-            <div class="font-option" data-font="Poppins" role="option">Poppins</div>
         </div>
     </div>
 
@@ -110,7 +107,7 @@
                 </h1>
                 <p class="hero-desc">
                     A Discord moderation bot built for communities that care about accountability.
-                    Log punishments, query history, and migrate from legacy tools — all powered by Supabase.
+                    Log verbal warnings, host staff evaluation polls, and migrate from legacy tools.
                 </p>
                 <div class="hero-actions">
                     <a href="https://docs.vigila.augystudios.com" class="btn btn-primary" target="_blank"
@@ -121,7 +118,7 @@
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
                         Read the Docs
                     </a>
-                    <a href="https://docs.vigila.augystudios.com" class="btn btn-secondary" target="_blank"
+                    <a href="https://github.com/augy-studios/verbal-warning-logger" class="btn btn-secondary" target="_blank"
                         rel="noopener">
                         Self-Host Vigila ↗
                     </a>
@@ -159,25 +156,25 @@
                 <h2 class="section-title">What is Vigila?</h2>
                 <p class="section-body">
                     Vigila (Latin: <em>to watch, to keep guard</em>) is a Discord moderation bot designed for
-                    server staff who need reliable, queryable punishment records. It was previously known as
-                    <strong>Verbal Warning Logger</strong> — renamed to reflect its broader scope as a full
-                    moderation logging suite rather than just warnings.
+                    server staff who need reliable, queryable verbal warning records. It was previously known as
+                    <strong>Verbal Warning Logger</strong> — renamed to reflect its broader scope with the introduction
+                    of the staff evaluation poll feature and to establish a more distinct identity.
                 </p>
                 <div class="feature-grid">
                     <div class="feature-card glass">
                         <div class="feature-icon">📋</div>
-                        <h3>Punishment Logging</h3>
-                        <p>Record warns, mutes, kicks, and bans with reasons, timestamps, and moderator attribution.</p>
+                        <h3>Verbal Warning Logging</h3>
+                        <p>Record verbal warnings with reasons, timestamps, and moderator attribution.</p>
                     </div>
                     <div class="feature-card glass">
                         <div class="feature-icon">🔍</div>
-                        <h3>Queryable History</h3>
-                        <p>Look up any user's full moderation history instantly. Filter by action type or moderator.</p>
+                        <h3>Staff Evaluation Polls</h3>
+                        <p>Conduct and manage staff evaluation polls to gather feedback and improve moderation practices.</p>
                     </div>
                     <div class="feature-card glass">
                         <div class="feature-icon">🗄️</div>
-                        <h3>Supabase Backend</h3>
-                        <p>All data is stored in your own Supabase project. You own your data, always.</p>
+                        <h3>SQLite Database</h3>
+                        <p>All data is stored in your own SQLite database locally. You own your data, always.</p>
                     </div>
                     <div class="feature-card glass">
                         <div class="feature-icon">🔓</div>
@@ -198,25 +195,23 @@
                         <strong>Auttaja</strong> was a popular Discord moderation bot that shut down its public service,
                         leaving many communities with years of punishment history trapped in a
                         <code>punishments.json</code>
-                        export file — and no easy way to use it going forward.
+                        export file with no easy way to use it going forward.
                     </p>
                     <p>
-                        Vigila was built with first-class support for these communities. Rather than starting from
-                        scratch,
-                        you can import your entire Auttaja punishment history into Vigila's Supabase database in
-                        minutes,
-                        preserving every warning, mute, kick, and ban record your staff ever issued.
+                        Vigila was built with support for these communities. Rather than starting from scratch,
+                        you can import your entire Auttaja punishment history into your own Supabase database in
+                        seconds, preserving every warning, mute, kick, and ban record your staff ever issued.
                     </p>
                     <p>
                         The Supabase integration was chosen specifically because it gives <em>you</em> full control over
-                        your data. There is no vendor lock-in, no third-party retention, and no black box. Your
-                        <code>punishments</code> table is yours — readable by standard PostgreSQL tooling, exportable
+                        your data. Your <code>punishments</code> table is yours, readable by standard PostgreSQL tooling, exportable
                         at any time, and secured with Supabase's row-level security (RLS).
                     </p>
                     <p>
-                        The <code>auttaja.py</code> cog bundled with Vigila is <strong>read-only</strong> — it queries
+                        The <code>auttaja.py</code> cog bundled with Vigila is <strong>mostly read-only</strong>. It queries
                         your migrated Auttaja data without modifying it, so your historical records remain exactly as
-                        Auttaja left them while Vigila continues logging new punishments going forward.
+                        Auttaja left them. You have the option to edit the reasons for past punishments through the
+                        <code>/auttaja edit</code> command if you want to clean up any old records.
                     </p>
                 </div>
             </div>
